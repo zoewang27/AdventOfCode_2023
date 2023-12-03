@@ -17,15 +17,12 @@ with open("input_test.txt") as myfile:
     for line in myfile:
         line = line.strip()
         row += 1
+
         # all symbols' location
-        pattern_1 = re.compile('[\*]')
-        match_s = pattern_1.finditer(line)
-        for s in match_s:
-            y_axis = s.start()
-            symbol_list.append((row, y_axis))
+        for ind_s, sym in enumerate(line):
+            if sym == "*":
+                symbol_list.append((row, ind_s))
 
-
-        # all digitals and its corresponding location
         pattern_2 = re.compile(r'\d+')
         match_d = pattern_2.finditer(line)
         for n in match_d:
@@ -44,7 +41,6 @@ calculated_pairs = set()
 
 for i, j in symbol_set:
     num = []
-
     for k, v in digital_dict.items():
         if (i, j) in v and k not in calculated_pairs:
             num.append(k)
