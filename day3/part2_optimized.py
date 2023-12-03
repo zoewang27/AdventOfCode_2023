@@ -12,7 +12,7 @@ digital_list = []
 symbol_list = []
 row = 0
 total = 0
-with open("input_test.txt") as myfile:
+with open("input.txt") as myfile:
 
     for line in myfile:
         line = line.strip()
